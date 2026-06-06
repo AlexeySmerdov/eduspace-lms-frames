@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EduSpace — Все экраны (Figma Frames)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --seed-bg: #F5F3FF;
+  --seed-fg: #1E1B4B;
+  --seed-primary: #7A38EC;
+  --seed-accent: #A78BFA;
+  --seed-surface: #FFFFFF;
+  --seed-radius: 12px;
+  --primary: var(--seed-primary);
+  --primary-light: var(--seed-accent);
+  --primary-lighter: #C4B5FD;
+  --primary-lightest: #EDE9FE;
+  --primary-dark: #5B21B6;
+  --primary-darker: #4C1D95;
+  --deep-indigo: #4439CA;
+  --bg: var(--seed-bg);
+  --surface: var(--seed-surface);
+  --surface-alt: #FAF5FF;
+  --surface-hover: #EDE9FE;
+  --surface-active: #DDD6FE;
+  --fg: var(--seed-fg);
+  --fg-secondary: #6D28D9;
+  --fg-muted: #8B8BA3;
+  --border: #DDD6FE;
+  --border-light: #EDE9FE;
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --warning: #F59E0B;
+  --warning-light: #FEF3C7;
+  --error: #EF4444;
+  --error-light: #FEE2E2;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius: var(--seed-radius);
+  --radius-lg: 16px;
+  --radius-pill: 50px;
+  --shadow-sm: 0 1px 2px rgba(122,56,236,0.06);
+  --shadow: 0 2px 8px rgba(122,56,236,0.08);
+  --shadow-md: 0 4px 16px rgba(122,56,236,0.12);
+  --shadow-lg: 0 8px 32px rgba(122,56,236,0.16);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-base-size: 15px;
+  --content-padding: 32px;
+  --transition: 0.2s ease;
+  --green-600: #059669;
+  --green-300: #6EE7B7;
+  --green-200: #A7F3D0;
+  --blue-600: #2563EB;
+  --blue-400: #3B82F6;
+  --blue-100: #DBEAFE;
+  --blue-50: #BFDBFE;
+  --amber-600: #D97706;
+  --amber-400: #F59E0B;
+  --amber-300: #FDE68A;
+  --amber-100: #FEF3C7;
+  --pink-600: #DB2777;
+  --pink-200: #FBCFE8;
+  --pink-100: #FCE7F3;
+  --lav-100: #E0E7FF;
+  --lav-50: #C7D2FE;
+  --lav-400: #A5B4FC;
+  --red-600: #DC2626;
+  --red-500: #EF4444;
+  --slate-200: #94A3B8;
+  --deep-night: #2D1B69;
+  --deep-night-2: #1E1B4B;
+  --white-rgb: 255,255,255;
+  --video-bg: #1a1625;
+  --amber-900: #92400E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);font-size:var(--font-base-size);line-height:1.6;color:var(--fg);background:#E8E0F0;padding:60px;-webkit-font-smoothing:antialiased;font-feature-settings:"kern" 1}
+a{color:var(--primary);text-decoration:none;transition:color var(--transition)}
+a:hover{color:var(--primary-dark)}
+button{font-family:var(--font);cursor:default;border:none;background:none;transition:all var(--transition)}
+input,select,textarea{font-family:var(--font);font-size:15px}
+h1{font-size:36px;line-height:1.15;font-weight:700;letter-spacing:-0.02em;color:var(--fg)}
+h2{font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-0.015em;color:var(--fg)}
+h3{font-size:22px;line-height:1.3;font-weight:600;letter-spacing:-0.01em;color:var(--fg)}
+h4{font-size:18px;line-height:1.4;font-weight:600;color:var(--fg)}
+.text-muted{color:var(--fg-muted)}
+.text-small{font-size:13px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:var(--radius-md);font-size:14px;font-weight:500;letter-spacing:0.02em;transition:all var(--transition);white-space:nowrap}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 1px 3px rgba(122,56,236,0.3)}
+.btn-primary:hover{background:var(--primary-dark);box-shadow:0 2px 8px rgba(122,56,236,0.4);transform:translateY(-1px)}
+.btn-primary:active{background:var(--primary-darker);transform:translateY(0)}
+.btn-secondary{background:var(--surface);color:var(--fg);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--primary-light);background:var(--primary-lightest)}
+.btn-ghost{color:var(--fg-secondary);padding:8px 14px}
+.btn-ghost:hover{background:var(--primary-lightest);color:var(--primary)}
+.btn-sm{padding:6px 14px;font-size:13px}
+.btn-lg{padding:14px 28px;font-size:16px;font-weight:600}
+.btn-icon{width:38px;height:38px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.btn-icon:hover{background:var(--primary-lightest)}
+.input-group{display:flex;flex-direction:column;gap:6px}
+.input-group label{font-size:13px;font-weight:500;color:var(--fg)}
+.input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--fg);font-size:15px;transition:all var(--transition);outline:none}
+.input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(122,56,236,0.12)}
+.input::placeholder{color:var(--fg-muted)}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238B8BA3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--radius-pill);font-size:12px;font-weight:500}
+.badge-primary{background:var(--primary-lightest);color:var(--primary)}
+.badge-success{background:var(--success-light);color:var(--green-600)}
+.badge-warning{background:var(--warning-light);color:var(--amber-600)}
+.progress{height:6px;background:var(--primary-lightest);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:3px;transition:width 0.4s ease}
+.screen{min-height:auto}
+.auth-screen{min-height:100vh;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary-lightest) 0%,var(--bg) 50%,var(--surface-alt) 100%);padding:24px}
+.auth-card{width:100%;max-width:420px;background:var(--surface);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)}
+.auth-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px;justify-content:center}
+.auth-logo svg{width:36px;height:36px}
+.auth-logo span{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:var(--fg)}
+.auth-card h2{text-align:center;margin-bottom:8px}
+.auth-card .auth-subtitle{text-align:center;color:var(--fg-muted);margin-bottom:28px;font-size:14px}
+.auth-form{display:flex;flex-direction:column;gap:18px}
+.auth-form .btn{width:100%;margin-top:4px}
+.auth-links{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
+.auth-links a{font-size:13px;color:var(--fg-secondary)}
+.auth-links a:hover{color:var(--primary)}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:4px 0}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.auth-divider span{font-size:12px;color:var(--fg-muted)}
+.app-layout{display:flex;flex-direction:column;min-height:auto}
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);padding:0 24px;height:64px;display:flex;align-items:center}
+.header-inner{width:100%;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.header-logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.header-logo svg{width:28px;height:28px}
+.header-logo span{font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--fg)}
+.nav-links{display:flex;gap:4px}
+.nav-link{padding:8px 14px;border-radius:var(--radius-md);font-size:14px;font-weight:500;color:var(--fg-muted);transition:all var(--transition);text-decoration:none}
+.nav-link:hover{color:var(--fg);background:var(--primary-lightest)}
+.nav-link.active{color:var(--primary);background:var(--primary-lightest)}
+.header-right{display:flex;align-items:center;gap:12px}
+.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--primary));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600;flex-shrink:0}
+.avatar:hover{box-shadow:0 0 0 3px var(--primary-lightest)}
+.avatar-green{background:linear-gradient(135deg,var(--green-600),var(--success))}
+.avatar-blue{background:linear-gradient(135deg,var(--blue-600),var(--blue-400))}
+.avatar-amber{background:linear-gradient(135deg,var(--amber-600),var(--warning))}
+.avatar-red{background:linear-gradient(135deg,var(--red-600),var(--error))}
+.main-content{flex:1;padding:var(--content-padding) 24px;max-width:1280px;margin:0 auto;width:100%}
+.catalog-header{margin-bottom:28px}
+.catalog-header h1{margin-bottom:8px}
+.catalog-header p{color:var(--fg-muted);font-size:16px}
+.filters-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;padding:18px 20px;background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);align-items:flex-end}
+.filter-group{display:flex;flex-direction:column;gap:4px;min-width:150px}
+.filter-group label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-muted)}
+.filter-group .input{padding:8px 12px;font-size:13px}
+.filters-bar .btn{margin-left:auto;align-self:flex-end}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+.course-card{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);overflow:hidden;transition:all var(--transition)}
+.course-cover{height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.course-cover svg{width:64px;height:64px;opacity:0.6}
+.course-fav{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.course-fav:hover{background:#fff;transform:scale(1.1)}
+.course-fav.active svg{fill:var(--error);stroke:var(--error)}
+.cover-violet{background:linear-gradient(135deg,var(--primary-lightest),var(--surface-active))}
+.cover-green{background:linear-gradient(135deg,var(--success-light),var(--green-200))}
+.cover-amber{background:linear-gradient(135deg,var(--warning-light),var(--amber-300))}
+.cover-blue{background:linear-gradient(135deg,var(--blue-100),var(--blue-50))}
+.cover-pink{background:linear-gradient(135deg,var(--pink-100),var(--pink-200))}
+.cover-indigo{background:linear-gradient(135deg,var(--lav-100),var(--lav-50))}
+.cover-course-violet{background:linear-gradient(135deg,var(--primary-lightest),var(--primary-lighter))}
+.cover-my-violet{background:linear-gradient(135deg,var(--primary-lightest),var(--primary-lighter))}
+.cover-my-green{background:linear-gradient(135deg,var(--success-light),var(--green-300))}
+.cover-my-indigo{background:linear-gradient(135deg,var(--lav-100),var(--lav-400))}
+.cover-club-video{background:linear-gradient(135deg,var(--deep-night),var(--primary-dark))}
+.cover-club-article{background:linear-gradient(135deg,var(--primary-lightest),var(--surface-alt))}
+.cover-club-video-dark{background:linear-gradient(135deg,var(--deep-night-2),var(--primary-darker))}
+.cover-club-article-green{background:linear-gradient(135deg,var(--success-light),var(--green-200))}
+.course-body{padding:18px}
+.course-body h4{margin-bottom:6px;line-height:1.3}
+.course-body p{font-size:13px;color:var(--fg-muted);line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.course-footer{display:flex;align-items:center;justify-content:space-between}
+.course-price{font-size:18px;font-weight:700;color:var(--fg)}
+.course-price .free{color:var(--success)}
+.course-price .old{font-size:13px;font-weight:400;color:var(--fg-muted);text-decoration:line-through;margin-right:6px}
+.calendar-section{margin-bottom:48px}
+.calendar-section h2{margin-bottom:20px}
+.calendar-list{display:flex;flex-direction:column;gap:12px}
+.calendar-item{display:flex;align-items:center;gap:18px;padding:18px 20px;background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);transition:all var(--transition)}
+.calendar-item:hover{border-color:var(--border);box-shadow:var(--shadow-sm)}
+.calendar-date{width:52px;height:56px;background:var(--primary-lightest);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.calendar-date .day{font-size:20px;font-weight:700;color:var(--primary);line-height:1}
+.calendar-date .month{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-secondary)}
+.calendar-info{flex:1}
+.calendar-info h4{margin-bottom:2px;font-size:15px}
+.calendar-info p{font-size:13px;color:var(--fg-muted)}
+.course-hero{display:grid;grid-template-columns:1fr 380px;gap:40px;margin-bottom:48px}
+.course-hero-cover{height:320px;background:linear-gradient(135deg,var(--primary-lightest),var(--primary-lighter));border-radius:var(--radius-lg);margin-bottom:28px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.course-hero-cover svg{width:120px;height:120px;opacity:0.5}
+.course-hero h1{margin-bottom:16px}
+.course-meta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.course-meta-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--fg-muted)}
+.course-meta-item svg{width:16px;height:16px;stroke:var(--fg-secondary)}
+.course-description{font-size:16px;line-height:1.7;color:var(--fg);max-width:65ch}
+.course-sidebar{position:sticky;top:88px;align-self:start}
+.course-sidebar-card{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);padding:28px;box-shadow:var(--shadow)}
+.course-sidebar-price{font-size:32px;font-weight:700;color:var(--fg);margin-bottom:20px}
+.course-sidebar-price .old{font-size:16px;font-weight:400;color:var(--fg-muted);text-decoration:line-through;display:block}
+.course-sidebar-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.course-sidebar-actions .btn{width:100%}
+.course-sidebar-features{display:flex;flex-direction:column;gap:12px;list-style:none}
+.course-sidebar-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--fg-muted)}
+.course-sidebar-features li svg{width:18px;height:18px;stroke:var(--success);flex-shrink:0}
+.accordion{margin-bottom:48px}
+.accordion h2{margin-bottom:20px}
+.accordion-item{border:1px solid var(--border-light);border-radius:var(--radius);margin-bottom:8px;overflow:hidden;background:var(--surface)}
+.accordion-header{width:100%;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:600;color:var(--fg);cursor:default;background:var(--surface);transition:background var(--transition);text-align:left}
+.accordion-header:hover{background:var(--surface-alt)}
+.accordion-header svg{width:20px;height:20px;stroke:var(--fg-muted);transition:transform 0.3s;flex-shrink:0}
+.accordion-item.open .accordion-header svg{transform:rotate(180deg)}
+.accordion-body{overflow:hidden}
+.accordion-item.open .accordion-body{max-height:600px}
+.accordion-body-inner{padding:0 20px 16px}
+.lesson-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--border-light);font-size:14px;color:var(--fg)}
+.lesson-item svg{width:16px;height:16px;stroke:var(--fg-muted);flex-shrink:0}
+.lesson-item .duration{margin-left:auto;font-size:12px;color:var(--fg-muted)}
+.my-courses-header{margin-bottom:28px}
+.my-courses-header h1{margin-bottom:4px}
+.my-course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.my-course-card{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);overflow:hidden;transition:all var(--transition)}
+.my-course-card:hover{box-shadow:var(--shadow)}
+.my-course-cover{height:120px;position:relative}
+.my-course-body{padding:20px}
+.my-course-body h4{margin-bottom:8px}
+.my-course-body .text-muted{font-size:13px;margin-bottom:14px}
+.my-course-progress{margin-bottom:14px}
+.my-course-progress .progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--fg-muted);margin-bottom:6px}
+.my-course-footer{display:flex;align-items:center;justify-content:space-between}
+.my-course-footer .meetup{font-size:12px;color:var(--fg-secondary);display:flex;align-items:center;gap:4px}
+.my-course-footer .meetup svg{width:14px;height:14px;stroke:var(--fg-secondary)}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 24px;text-align:center}
+.empty-state svg{width:120px;height:120px;margin-bottom:20px;opacity:0.5}
+.empty-state h3{margin-bottom:8px}
+.empty-state p{color:var(--fg-muted);font-size:15px;margin-bottom:20px;max-width:360px}
+.player-top{background:var(--surface);border-bottom:1px solid var(--border-light);padding:12px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50}
+.player-top .course-title{font-size:14px;font-weight:600;flex:1}
+.player-progress{flex:1;max-width:400px;display:flex;align-items:center;gap:10px}
+.player-progress .progress{flex:1}
+.player-progress span{font-size:12px;color:var(--fg-muted);white-space:nowrap}
+.player-layout{display:grid;grid-template-columns:280px 1fr;min-height:600px}
+.player-sidebar{background:var(--surface);border-right:1px solid var(--border-light);padding:20px 0;overflow-y:auto;max-height:900px;position:sticky;top:0}
+.module-group{margin-bottom:4px}
+.module-title{padding:10px 20px;font-size:13px;font-weight:600;color:var(--fg);letter-spacing:-0.01em;cursor:default;display:flex;align-items:center;gap:8px;transition:background var(--transition)}
+.module-title:hover{background:var(--surface-alt)}
+.module-title svg{width:14px;height:14px;stroke:var(--fg-muted);transition:transform 0.2s}
+.module-group.open .module-title svg{transform:rotate(90deg)}
+.module-lessons{display:none}
+.module-group.open .module-lessons{display:block}
+.sidebar-lesson{display:flex;align-items:center;gap:10px;padding:8px 20px 8px 38px;font-size:13px;color:var(--fg-muted);cursor:default;transition:all var(--transition);text-decoration:none}
+.sidebar-lesson:hover{background:var(--primary-lightest);color:var(--fg)}
+.sidebar-lesson.active{background:var(--primary-lightest);color:var(--primary);font-weight:500}
+.sidebar-lesson .status-icon{width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sidebar-lesson .status-icon.not-started{border:2px solid var(--border)}
+.sidebar-lesson .status-icon.in-progress{border:2px solid var(--primary-light);background:var(--primary-lightest)}
+.sidebar-lesson .status-icon.completed{background:var(--success)}
+.sidebar-lesson .status-icon.completed svg{width:10px;height:10px;stroke:#fff}
+.player-main{padding:32px;overflow-y:auto}
+.video-player{width:100%;aspect-ratio:16/9;background:var(--video-bg);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;overflow:hidden}
+.video-player::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(122,56,236,0.15),rgba(167,139,250,0.1))}
+.play-btn{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;border:2px solid rgba(255,255,255,0.3)}
+.play-btn svg{width:28px;height:28px;fill:#fff;margin-left:3px}
+.video-controls{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.6));display:flex;align-items:center;gap:12px}
+.video-controls .time{font-size:12px;color:rgba(255,255,255,0.8)}
+.video-controls .video-progress{flex:1;height:4px;background:rgba(255,255,255,0.2);border-radius:2px}
+.video-controls .video-progress .filled{width:35%;height:100%;background:var(--primary-light);border-radius:2px}
+.lesson-info{margin-bottom:32px}
+.lesson-info h2{margin-bottom:10px;font-size:24px}
+.lesson-info p{font-size:15px;line-height:1.7;color:var(--fg-muted);max-width:65ch}
+.comments-section{margin-bottom:32px}
+.comments-section h3{margin-bottom:18px;font-size:18px}
+.comment-form{display:flex;gap:12px;margin-bottom:24px}
+.comment-form .avatar{flex-shrink:0}
+.comment-form textarea{flex:1;padding:12px;border:1.5px solid var(--border);border-radius:var(--radius);resize:vertical;min-height:60px;font-size:14px;outline:none;transition:border var(--transition)}
+.comment-form textarea:focus{border-color:var(--primary)}
+.comment-form .btn{align-self:flex-end}
+.comment-list{display:flex;flex-direction:column;gap:16px}
+.comment-item{display:flex;gap:12px}
+.comment-item .avatar{width:32px;height:32px;font-size:12px;flex-shrink:0}
+.comment-content{flex:1}
+.comment-content .meta{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.comment-content .meta .name{font-size:13px;font-weight:600}
+.comment-content .meta .time{font-size:12px;color:var(--fg-muted)}
+.comment-content p{font-size:14px;line-height:1.6}
+.homework-section{background:var(--surface-alt);border-radius:var(--radius-lg);padding:24px;border:1px solid var(--border-light)}
+.homework-section h3{margin-bottom:12px;font-size:18px}
+.homework-section>p{font-size:14px;color:var(--fg-muted);margin-bottom:16px}
+.upload-area{border:2px dashed var(--border);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin-bottom:16px}
+.upload-area svg{width:32px;height:32px;stroke:var(--fg-muted)}
+.upload-area span{font-size:14px;color:var(--fg-muted)}
+.homework-status{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--warning-light);border-radius:var(--radius-md);font-size:14px;color:var(--amber-900)}
+.forum-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.topic-list{display:flex;flex-direction:column;gap:8px}
+.topic-item{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border-light);text-decoration:none;color:var(--fg)}
+.topic-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--primary-lightest);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.topic-icon svg{width:20px;height:20px;stroke:var(--primary)}
+.topic-info{flex:1}
+.topic-info h4{font-size:15px;margin-bottom:2px}
+.topic-info p{font-size:13px;color:var(--fg-muted)}
+.topic-stats{display:flex;gap:16px;font-size:12px;color:var(--fg-muted)}
+.topic-stats span{display:flex;align-items:center;gap:4px}
+.activity-dot{width:8px;height:8px;border-radius:50%;background:var(--success)}
+.club-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.month-switcher{display:flex;align-items:center;gap:8px}
+.month-switcher button{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:var(--surface)}
+.month-switcher button:hover{border-color:var(--primary-light);background:var(--primary-lightest)}
+.month-switcher span{font-size:15px;font-weight:600;min-width:120px;text-align:center}
+.club-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px}
+.club-card{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light);overflow:hidden;transition:all var(--transition)}
+.club-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.club-card-cover{height:140px;position:relative;display:flex;align-items:center;justify-content:center}
+.club-card-cover.video-cover{background:linear-gradient(135deg,var(--deep-night),var(--primary-dark))}
+.club-card-cover.article-cover{background:linear-gradient(135deg,var(--primary-lightest),var(--surface-alt))}
+.club-card-cover svg{width:40px;height:40px;opacity:0.6}
+.club-card-type{position:absolute;top:10px;left:10px;padding:3px 8px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+.club-card-type.video{background:rgba(255,255,255,0.2);color:#fff}
+.club-card-type.article{background:var(--primary-lightest);color:var(--primary)}
+.club-card-body{padding:16px}
+.club-card-body h4{font-size:14px;margin-bottom:6px}
+.club-card-body p{font-size:13px;color:var(--fg-muted)}
+.club-plan{background:var(--surface);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--border-light);margin-bottom:40px}
+.club-plan h2{margin-bottom:20px}
+.plan-list{display:flex;flex-direction:column;gap:12px}
+.plan-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--surface-alt);border-radius:var(--radius);font-size:14px}
+.plan-item .plan-date{font-weight:600;color:var(--fg-secondary);white-space:nowrap;min-width:80px}
+.club-voting{background:var(--surface);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--border-light)}
+.club-voting h2{margin-bottom:8px}
+.club-voting>p{font-size:14px;color:var(--fg-muted);margin-bottom:20px}
+.vote-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.vote-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--surface-alt);border-radius:var(--radius)}
+.vote-item .vote-count{width:44px;height:44px;border-radius:var(--radius-md);background:var(--primary-lightest);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--primary);flex-shrink:0}
+.vote-item .vote-count .text-small{font-size:9px;font-weight:600;letter-spacing:0.06em}
+.vote-item .vote-info{flex:1}
+.vote-item .vote-info h4{font-size:14px;margin-bottom:2px}
+.vote-item .vote-info p{font-size:12px;color:var(--fg-muted)}
+.vote-item .leader-badge{font-size:11px;font-weight:600;color:var(--warning);display:flex;align-items:center;gap:4px;margin-top:4px}
+.suggest-topic{display:flex;gap:10px}
+.suggest-topic .input{flex:1}
+.profile-header{display:flex;align-items:center;gap:24px;margin-bottom:32px;padding:28px;background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border-light)}
+.profile-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0}
+.profile-info{flex:1}
+.profile-info h2{margin-bottom:4px}
+.profile-info p{font-size:14px;color:var(--fg-muted)}
+.profile-tabs{display:flex;gap:4px;margin-bottom:24px;border-bottom:1px solid var(--border-light)}
+.profile-tab{padding:12px 18px;font-size:14px;font-weight:500;color:var(--fg-muted);cursor:default;transition:all var(--transition);border-bottom:2px solid transparent;margin-bottom:-1px}
+.profile-tab:hover{color:var(--fg)}
+.profile-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.profile-content{margin-bottom:32px}
+.profile-section{background:var(--surface);border-radius:var(--radius-lg);padding:24px;border:1px solid var(--border-light);margin-bottom:20px}
+.profile-section h3{margin-bottom:16px;font-size:18px}
+.profile-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.profile-actions{display:flex;gap:12px;margin-top:16px}
+.modal{background:var(--surface);border-radius:var(--radius-lg);width:100%;max-width:480px;box-shadow:var(--shadow-lg);padding:32px;position:relative}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:var(--primary-lightest)}
+.modal h2{margin-bottom:8px}
+.modal>p{font-size:14px;color:var(--fg-muted);margin-bottom:24px}
+.payment-methods{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.payment-method{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--border);border-radius:var(--radius);transition:all var(--transition)}
+.payment-method.selected{border-color:var(--primary);background:var(--primary-lightest)}
+.payment-method .radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.payment-method.selected .radio{border-color:var(--primary)}
+.payment-method.selected .radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.payment-method .pm-label{font-size:14px;font-weight:500}
+.payment-fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+
+/* ===== Canvas Frame Layout ===== */
+.frames-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: flex-start;
+}
+.frame-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  align-items: flex-start;
+}
+.frame-wrapper {
+  flex-shrink: 0;
+}
+.frame-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1E1B4B;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.frame-sublabel {
+  font-size: 13px;
+  font-weight: 400;
+  color: #8B8BA3;
+  margin-left: 8px;
+}
+.frame-box {
+  width: 1440px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  background: #fff;
+  position: relative;
+}
+.frame-box.auth-frame {
+  width: 1440px;
+  min-height: 900px;
+}
+.frame-box .auth-screen {
+  display: flex !important;
+  min-height: 900px;
+}
+.frame-box .screen {
+  display: block !important;
+  min-height: auto;
+}
+.frame-box .app-layout {
+  display: flex !important;
+}
+
+/* Payment modal frame */
+.payment-overlay-bg {
+  width: 1440px;
+  min-height: 600px;
+  background: rgba(30,27,75,0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+.payment-overlay-bg .modal {
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="frames-canvas">
+
+<!-- ==================== ROW 1: Auth Screens ==================== -->
+<div class="frame-row">
+
+<!-- 01 — Вход -->
+<div class="frame-wrapper">
+<div class="frame-label">01 — Вход <span class="frame-sublabel">Auth / Login</span></div>
+<div class="frame-box auth-frame">
+<div class="auth-screen">
+<div class="auth-card">
+<div class="auth-logo"><svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--primary)"/><path d="M10 18L16 12L22 18L16 24L10 18Z" fill="white" opacity="0.9"/><path d="M16 18L22 12L28 18L22 24L16 18Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></div>
+<h2>Добро пожаловать</h2>
+<p class="auth-subtitle">Войдите, чтобы продолжить обучение</p>
+<form class="auth-form">
+<div class="input-group"><label for="f1-login-email">Email</label><input type="email" id="f1-login-email" class="input" placeholder="name@example.com"></div>
+<div class="input-group"><label for="f1-login-pass">Пароль</label><input type="password" id="f1-login-pass" class="input" placeholder="Введите пароль"></div>
+<button type="submit" class="btn btn-primary btn-lg">Войти</button>
+</form>
+<div class="auth-links"><a href="#">Забыли пароль?</a><div class="auth-divider"><span>или</span></div><a href="#">Нет аккаунта? Зарегистрироваться</a></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 02 — Регистрация -->
+<div class="frame-wrapper">
+<div class="frame-label">02 — Регистрация <span class="frame-sublabel">Auth / Register</span></div>
+<div class="frame-box auth-frame">
+<div class="auth-screen">
+<div class="auth-card">
+<div class="auth-logo"><svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--primary)"/><path d="M10 18L16 12L22 18L16 24L10 18Z" fill="white" opacity="0.9"/><path d="M16 18L22 12L28 18L22 24L16 18Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></div>
+<h2>Создать аккаунт</h2>
+<p class="auth-subtitle">Присоединяйтесь к платформе обучения</p>
+<form class="auth-form">
+<div class="input-group"><label>Имя</label><input type="text" class="input" placeholder="Как вас зовут?"></div>
+<div class="input-group"><label>Email</label><input type="email" class="input" placeholder="name@example.com"></div>
+<div class="input-group"><label>Пароль</label><input type="password" class="input" placeholder="Минимум 8 символов"></div>
+<div class="input-group"><label>Подтверждение пароля</label><input type="password" class="input" placeholder="Повторите пароль"></div>
+<button type="submit" class="btn btn-primary btn-lg">Зарегистрироваться</button>
+</form>
+<div class="auth-links"><a href="#">Уже есть аккаунт? Войти</a></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 03 — Восстановление пароля -->
+<div class="frame-wrapper">
+<div class="frame-label">03 — Восстановление пароля <span class="frame-sublabel">Auth / Password Recovery</span></div>
+<div class="frame-box auth-frame">
+<div class="auth-screen">
+<div class="auth-card">
+<div class="auth-logo"><svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--primary)"/><path d="M10 18L16 12L22 18L16 24L10 18Z" fill="white" opacity="0.9"/><path d="M16 18L22 12L28 18L22 24L16 18Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></div>
+<h2>Восстановление</h2>
+<p class="auth-subtitle">Введите email, и мы отправим ссылку для сброса пароля</p>
+<form class="auth-form">
+<div class="input-group"><label>Email</label><input type="email" class="input" placeholder="name@example.com"></div>
+<button type="submit" class="btn btn-primary btn-lg">Отправить ссылку</button>
+</form>
+<div class="auth-links"><a href="#">Вернуться ко входу</a></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ==================== ROW 2: Home + Course Preview ==================== -->
+<div class="frame-row">
+
+<!-- 04 — Главная -->
+<div class="frame-wrapper">
+<div class="frame-label">04 — Главная <span class="frame-sublabel">Home / Course Catalog</span></div>
+<div class="frame-box" style="min-height:1200px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link active" href="#">Главная</a>
+<a class="nav-link" href="#">Мои курсы</a>
+<a class="nav-link" href="#">Форум</a>
+<a class="nav-link" href="#">Клуб</a>
+<a class="nav-link" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="catalog-header"><h1>Каталог курсов</h1><p>Выберите направление и начните обучение прямо сейчас</p></div>
+<div class="filters-bar">
+<div class="filter-group"><label>Категория</label><select class="input"><option>Все категории</option><option>Дизайн</option><option>Разработка</option><option>Маркетинг</option><option>Менеджмент</option></select></div>
+<div class="filter-group"><label>Уровень</label><select class="input"><option>Любой</option><option>Начинающий</option><option>Средний</option><option>Продвинутый</option></select></div>
+<div class="filter-group"><label>Цена до, &#8381;</label><input type="range" class="input" min="0" max="50000" value="50000" style="padding:4px 0;border:none"></div>
+<div class="filter-group"><label>Статус</label><select class="input"><option>Все</option><option>Бесплатные</option><option>Платные</option></select></div>
+<button class="btn btn-secondary btn-sm">Сбросить</button>
+</div>
+<div class="course-grid">
+<div class="course-card"><div class="course-cover cover-violet"><svg viewBox="0 0 64 64" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="12" y="8" width="40" height="48" rx="4"/><line x1="20" y1="20" x2="44" y2="20"/><line x1="20" y1="28" x2="38" y2="28"/><line x1="20" y1="36" x2="42" y2="36"/></svg><div class="course-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>UX/UI дизайн с нуля</h4><p>Полный курс по проектированию интерфейсов: от исследования до прототипа в Figma</p><div class="course-footer"><span class="course-price">12 900 &#8381;</span><button class="btn btn-primary btn-sm">Купить</button></div></div></div>
+<div class="course-card"><div class="course-cover cover-green"><svg viewBox="0 0 64 64" fill="none" stroke="var(--green-600)" stroke-width="1.5"><polyline points="16,44 28,24 36,36 48,16"/><rect x="12" y="8" width="40" height="48" rx="4"/></svg><div class="course-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>Python для анализа данных</h4><p>Научитесь работать с pandas, numpy и визуализировать данные с matplotlib</p><div class="course-footer"><span class="course-price"><span class="free">Бесплатно</span></span><button class="btn btn-primary btn-sm">Начать</button></div></div></div>
+<div class="course-card"><div class="course-cover cover-amber"><svg viewBox="0 0 64 64" fill="none" stroke="var(--amber-600)" stroke-width="1.5"><rect x="8" y="16" width="48" height="32" rx="4"/><circle cx="32" cy="32" r="8"/><path d="M28 28L38 32L28 36V28Z" fill="var(--amber-600)" opacity="0.3"/></svg><div class="course-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>Видеомонтаж в DaVinci Resolve</h4><p>Профессиональный монтаж, цветокоррекция и работа со звуком</p><div class="course-footer"><span class="course-price"><span class="old">18 000 &#8381;</span> 9 900 &#8381;</span><button class="btn btn-primary btn-sm">Купить</button></div></div></div>
+<div class="course-card"><div class="course-cover cover-blue"><svg viewBox="0 0 64 64" fill="none" stroke="var(--blue-600)" stroke-width="1.5"><rect x="12" y="12" width="16" height="16" rx="3"/><rect x="36" y="12" width="16" height="16" rx="3"/><rect x="12" y="36" width="16" height="16" rx="3"/><rect x="36" y="36" width="16" height="16" rx="3"/></svg><div class="course-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>Product-менеджмент</h4><p>Стратегия продукта, метрики, приоритизация и работа с командой</p><div class="course-footer"><span class="course-price">15 500 &#8381;</span><button class="btn btn-primary btn-sm">Купить</button></div></div></div>
+<div class="course-card"><div class="course-cover cover-pink"><svg viewBox="0 0 64 64" fill="none" stroke="var(--pink-600)" stroke-width="1.5"><circle cx="32" cy="24" r="10"/><path d="M18 52C18 42 24 36 32 36C40 36 46 42 46 52"/></svg><div class="course-fav active"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--error)" stroke="var(--error)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>Публичные выступления</h4><p>Как готовить презентации, бороться со страхом сцены и убеждать аудиторию</p><div class="course-footer"><span class="course-price">7 800 &#8381;</span><button class="btn btn-primary btn-sm">Купить</button></div></div></div>
+<div class="course-card"><div class="course-cover cover-indigo"><svg viewBox="0 0 64 64" fill="none" stroke="var(--deep-indigo)" stroke-width="1.5"><path d="M12 48L22 28L32 38L42 18L52 32"/><circle cx="22" cy="28" r="3"/><circle cx="32" cy="38" r="3"/><circle cx="42" cy="18" r="3"/></svg><div class="course-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div><div class="course-body"><h4>SEO-продвижение</h4><p>Техническая оптимизация, контент-стратегия и линкбилдинг для роста трафика</p><div class="course-footer"><span class="course-price"><span class="free">Бесплатно</span></span><button class="btn btn-primary btn-sm">Начать</button></div></div></div>
+</div>
+<section class="calendar-section"><h2>Календарь мероприятий</h2><div class="calendar-list"><div class="calendar-item"><div class="calendar-date"><span class="day">12</span><span class="month">Июн</span></div><div class="calendar-info"><h4>Митап: тренды в UX-дизайне 2026</h4><p>19:00 МСК &middot; Онлайн &middot; Спикер: Ольга Краснова</p></div><button class="btn btn-secondary btn-sm">Записаться</button></div><div class="calendar-item"><div class="calendar-date"><span class="day">18</span><span class="month">Июн</span></div><div class="calendar-info"><h4>Вебинар: как строить карьеру в IT</h4><p>18:30 МСК &middot; Онлайн &middot; Спикер: Дмитрий Волков</p></div><button class="btn btn-secondary btn-sm">Записаться</button></div><div class="calendar-item"><div class="calendar-date"><span class="day">25</span><span class="month">Июн</span></div><div class="calendar-info"><h4>Воркшоп: прототипирование в Figma</h4><p>17:00 МСК &middot; Онлайн &middot; Спикер: Анна Белова</p></div><button class="btn btn-secondary btn-sm">Записаться</button></div></div></section>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 05 — Страница курса -->
+<div class="frame-wrapper">
+<div class="frame-label">05 — Страница курса <span class="frame-sublabel">Course Preview</span></div>
+<div class="frame-box" style="min-height:1100px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link" href="#">Главная</a>
+<a class="nav-link" href="#">Мои курсы</a>
+<a class="nav-link" href="#">Форум</a>
+<a class="nav-link" href="#">Клуб</a>
+<a class="nav-link" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="course-hero">
+<div class="course-hero-main">
+<div class="course-hero-cover"><svg viewBox="0 0 120 120" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="20" y="10" width="80" height="100" rx="8"/><line x1="35" y1="35" x2="85" y2="35"/><line x1="35" y1="50" x2="75" y2="50"/><line x1="35" y1="65" x2="80" y2="65"/><circle cx="60" cy="100" r="5"/></svg></div>
+<h1>UX/UI дизайн с нуля</h1>
+<div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 48 часов</div><div class="course-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 12 модулей</div><div class="course-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 2 340 студентов</div><div class="course-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8</div></div>
+<p class="course-description">Курс охватывает весь процесс создания цифровых продуктов: от исследования пользователей и построения информационных архитектур до детального проектирования интерфейсов и передачи макетов в разработку. Вы освоите Figma, научитесь проводить юзабилити-тестирования и собирать дизайн-системы.</p>
+</div>
+<div class="course-sidebar"><div class="course-sidebar-card"><div class="course-sidebar-price"><span class="old">16 900 &#8381;</span>12 900 &#8381;</div><div class="course-sidebar-actions"><button class="btn btn-primary btn-lg">Купить курс</button><button class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg> В избранное</button></div><ul class="course-sidebar-features"><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Сертификат по окончании</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Доступ навсегда</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Проверка домашних заданий</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Чат с куратором</li></ul></div></div>
+</div>
+<div class="accordion"><h2>Программа курса</h2>
+<div class="accordion-item open"><button class="accordion-header">Модуль 1. Введение в UX-дизайн <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="accordion-body"><div class="accordion-body-inner"><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Что такое UX и чем он отличается от UI <span class="duration">12 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Роли в продуктовой команде <span class="duration">18 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Процесс дизайн-мышления <span class="duration">24 мин</span></div></div></div></div>
+<div class="accordion-item"><button class="accordion-header">Модуль 2. Исследование пользователей <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="accordion-body"><div class="accordion-body-inner"><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Методы качественного исследования <span class="duration">20 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Создание персон пользователей <span class="duration">16 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Customer Journey Map <span class="duration">22 мин</span></div></div></div></div>
+<div class="accordion-item"><button class="accordion-header">Модуль 3. Информационная архитектура <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="accordion-body"><div class="accordion-body-inner"><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Карточная сортировка <span class="duration">14 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Навигационные паттерны <span class="duration">19 мин</span></div></div></div></div>
+<div class="accordion-item"><button class="accordion-header">Модуль 4. Wireframing и прототипирование <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="accordion-body"><div class="accordion-body-inner"><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Бумажные скетчи и лоу-фай прототипы <span class="duration">15 мин</span></div><div class="lesson-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Прототипирование в Figma <span class="duration">32 мин</span></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ==================== ROW 3: My Courses + Course Player ==================== -->
+<div class="frame-row">
+
+<!-- 06 — Мои курсы -->
+<div class="frame-wrapper">
+<div class="frame-label">06 — Мои курсы <span class="frame-sublabel">My Courses</span></div>
+<div class="frame-box" style="min-height:800px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link" href="#">Главная</a>
+<a class="nav-link active" href="#">Мои курсы</a>
+<a class="nav-link" href="#">Форум</a>
+<a class="nav-link" href="#">Клуб</a>
+<a class="nav-link" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="my-courses-header"><h1>Мои курсы</h1><p class="text-muted">3 курса в обучении</p></div>
+<div class="my-course-grid">
+<div class="my-course-card"><div class="my-course-cover cover-my-violet"></div><div class="my-course-body"><h4>UX/UI дизайн с нуля</h4><p class="text-muted">Модуль 3 из 12 &middot; Информационная архитектура</p><div class="my-course-progress"><div class="progress-label"><span>Прогресс</span><span>28%</span></div><div class="progress"><div class="progress-fill" style="width:28%"></div></div></div><div class="my-course-footer"><span class="meetup"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 12 июня</span><button class="btn btn-primary btn-sm">Продолжить</button></div></div></div>
+<div class="my-course-card"><div class="my-course-cover cover-my-green"></div><div class="my-course-body"><h4>Python для анализа данных</h4><p class="text-muted">Модуль 7 из 10 &middot; Визуализация данных</p><div class="my-course-progress"><div class="progress-label"><span>Прогресс</span><span>65%</span></div><div class="progress"><div class="progress-fill" style="width:65%"></div></div></div><div class="my-course-footer"><span class="meetup"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 20 июня</span><button class="btn btn-primary btn-sm">Продолжить</button></div></div></div>
+<div class="my-course-card"><div class="my-course-cover cover-my-indigo"></div><div class="my-course-body"><h4>SEO-продвижение</h4><p class="text-muted">Модуль 1 из 8 &middot; Введение в SEO</p><div class="my-course-progress"><div class="progress-label"><span>Прогресс</span><span>8%</span></div><div class="progress"><div class="progress-fill" style="width:8%"></div></div></div><div class="my-course-footer"><span class="meetup text-muted" style="font-size:12px">Нет митапов</span><button class="btn btn-primary btn-sm">Продолжить</button></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 07 — Прохождение курса -->
+<div class="frame-wrapper">
+<div class="frame-label">07 — Прохождение курса <span class="frame-sublabel">Course Player</span></div>
+<div class="frame-box" style="min-height:900px">
+<div class="screen">
+<div class="player-top"><button class="btn btn-ghost btn-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg> Назад</button><span class="course-title">UX/UI дизайн с нуля</span><div class="player-progress"><div class="progress" style="flex:1"><div class="progress-fill" style="width:28%"></div></div><span>28%</span></div></div>
+<div class="player-layout">
+<aside class="player-sidebar">
+<div class="module-group open"><div class="module-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg> Модуль 1. Введение в UX</div><div class="module-lessons"><a class="sidebar-lesson"><span class="status-icon completed"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Что такое UX и UI</a><a class="sidebar-lesson"><span class="status-icon completed"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Роли в команде</a><a class="sidebar-lesson"><span class="status-icon completed"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Дизайн-мышление</a></div></div>
+<div class="module-group open"><div class="module-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg> Модуль 2. Исследование</div><div class="module-lessons"><a class="sidebar-lesson"><span class="status-icon completed"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Качественные методы</a><a class="sidebar-lesson"><span class="status-icon completed"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Персоны</a><a class="sidebar-lesson active"><span class="status-icon in-progress"></span> Customer Journey Map</a></div></div>
+<div class="module-group"><div class="module-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg> Модуль 3. Архитектура</div><div class="module-lessons"><a class="sidebar-lesson"><span class="status-icon not-started"></span> Карточная сортировка</a><a class="sidebar-lesson"><span class="status-icon not-started"></span> Навигационные паттерны</a></div></div>
+<div class="module-group"><div class="module-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg> Модуль 4. Прототипирование</div><div class="module-lessons"><a class="sidebar-lesson"><span class="status-icon not-started"></span> Бумажные скетчи</a><a class="sidebar-lesson"><span class="status-icon not-started"></span> Прототип в Figma</a><a class="sidebar-lesson"><span class="status-icon not-started"></span> Юзабилити-тест</a></div></div>
+</aside>
+<main class="player-main">
+<div class="video-player"><button class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button><div class="video-controls"><span class="time">05:42</span><div class="video-progress"><div class="filled"></div></div><span class="time">22:15</span></div></div>
+<div class="lesson-info"><h2>Customer Journey Map</h2><p>На этом уроке вы научитесь строить карту пути пользователя: определять ключевые точки контакта, фиксировать эмоции и боли на каждом этапе, и использовать эти данные для принятия продуктовых решений.</p></div>
+<div class="comments-section"><h3>Комментарии (4)</h3><div class="comment-form"><div class="avatar" style="width:32px;height:32px;font-size:12px">АП</div><textarea placeholder="Написать комментарий..."></textarea><button class="btn btn-primary btn-sm">Отправить</button></div><div class="comment-list"><div class="comment-item"><div class="avatar avatar-green" style="width:32px;height:32px;font-size:12px">МК</div><div class="comment-content"><div class="meta"><span class="name">Мария Козлова</span><span class="time">2 часа назад</span></div><p>Отличный урок! Особенно полезно было увидеть реальный пример CJM.</p></div></div><div class="comment-item"><div class="avatar avatar-blue" style="width:32px;height:32px;font-size:12px">ИП</div><div class="comment-content"><div class="meta"><span class="name">Иван Петров</span><span class="time">5 часов назад</span></div><p>Подскажите, какой инструмент лучше для построения CJM — Miro или FigJam?</p></div></div><div class="comment-item" style="margin-left:44px"><div class="avatar avatar-amber" style="width:32px;height:32px;font-size:12px">АБ</div><div class="comment-content"><div class="meta"><span class="name">Анна Белова</span><span class="time">4 часа назад</span><span class="badge badge-primary" style="margin-left:8px">Куратор</span></div><p>Иван, оба инструмента отлично подходят. FigJam удобнее, если вы уже работаете в Figma.</p></div></div></div></div>
+<div class="homework-section"><h3>Домашнее задание</h3><p>Создайте Customer Journey Map для любого мобильного приложения, которым вы пользуетесь ежедневно.</p><div class="upload-area"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Нажмите для загрузки файла</span><span class="text-small">PDF, PNG, JPG до 10 МБ</span></div><div class="homework-status"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Отправлено на проверку 3 июня</div></div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ==================== ROW 4: Forum + Club ==================== -->
+<div class="frame-row">
+
+<!-- 08 — Форум -->
+<div class="frame-wrapper">
+<div class="frame-label">08 — Форум <span class="frame-sublabel">Forum</span></div>
+<div class="frame-box" style="min-height:800px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link" href="#">Главная</a>
+<a class="nav-link" href="#">Мои курсы</a>
+<a class="nav-link active" href="#">Форум</a>
+<a class="nav-link" href="#">Клуб</a>
+<a class="nav-link" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="forum-header"><div><h1>Форум</h1><p class="text-muted" style="margin-top:4px">Обсуждайте курсы и делитесь опытом</p></div><button class="btn btn-primary">Новая тема</button></div>
+<div id="f8-forum-topics"><div class="topic-list">
+<a class="topic-item" href="#"><div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="topic-info"><h4>Как правильно строить CJM?</h4><p>Обсуждение методов и инструментов</p></div><div class="topic-stats"><span>12 веток</span><span class="activity-dot"></span><span>Активно</span></div></a>
+<a class="topic-item" href="#"><div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="topic-info"><h4>Figma vs Sketch в 2026</h4><p>Какой инструмент выбрать</p></div><div class="topic-stats"><span>8 веток</span><span class="activity-dot"></span><span>Активно</span></div></a>
+<a class="topic-item" href="#"><div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="topic-info"><h4>Ищем команду для хакатона</h4><p>Дизайнер ищет разработчиков</p></div><div class="topic-stats"><span>5 веток</span><span>2 дня назад</span></div></a>
+<a class="topic-item" href="#"><div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="topic-info"><h4>Ревью портфолио</h4><p>Делитесь работами и получайте критику</p></div><div class="topic-stats"><span>23 ветки</span><span class="activity-dot"></span><span>Активно</span></div></a>
+<a class="topic-item" href="#"><div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="topic-info"><h4>Полезные книги по UX</h4><p>Список литературы для дизайнеров</p></div><div class="topic-stats"><span>31 ветка</span><span class="activity-dot"></span><span>Активно</span></div></a>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 09 — Клуб -->
+<div class="frame-wrapper">
+<div class="frame-label">09 — Клуб <span class="frame-sublabel">Club</span></div>
+<div class="frame-box" style="min-height:1200px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link" href="#">Главная</a>
+<a class="nav-link" href="#">Мои курсы</a>
+<a class="nav-link" href="#">Форум</a>
+<a class="nav-link active" href="#">Клуб</a>
+<a class="nav-link" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="club-header"><div><h1>Клуб</h1><p class="text-muted" style="margin-top:4px">Материалы, встречи и голосования</p></div><div class="month-switcher"><button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button><span>Июнь 2026</span><button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></button></div></div>
+<div class="club-grid">
+<div class="club-card"><div class="club-card-cover video-cover"><span class="club-card-type video">Видео</span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><polygon points="16,12 30,20 16,28" fill="rgba(255,255,255,0.7)"/></svg></div><div class="club-card-body"><h4>Мастер-класс: анимация интерфейсов</h4><p>45 мин &middot; 2 июня</p></div></div>
+<div class="club-card"><div class="club-card-cover article-cover"><span class="club-card-type article">Статья</span><svg viewBox="0 0 40 40" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="8" y="6" width="24" height="28" rx="3"/><line x1="14" y1="14" x2="26" y2="14"/><line x1="14" y1="20" x2="24" y2="20"/></svg></div><div class="club-card-body"><h4>Как проводить дизайн-ревью</h4><p>8 мин &middot; 5 июня</p></div></div>
+<div class="club-card"><div class="club-card-cover cover-club-video-dark"><span class="club-card-type video">Видео</span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><polygon points="16,12 30,20 16,28" fill="rgba(255,255,255,0.7)"/></svg></div><div class="club-card-body"><h4>Запись митапа: тренды UX 2026</h4><p>1 ч 20 мин &middot; 12 июня</p></div></div>
+<div class="club-card"><div class="club-card-cover cover-club-article-green"><span class="club-card-type article">Статья</span><svg viewBox="0 0 40 40" fill="none" stroke="var(--green-600)" stroke-width="1.5"><rect x="8" y="6" width="24" height="28" rx="3"/><line x1="14" y1="14" x2="26" y2="14"/><line x1="14" y1="20" x2="24" y2="20"/></svg></div><div class="club-card-body"><h4>Гайд по доступности интерфейсов</h4><p>12 мин &middot; 8 июня</p></div></div>
+</div>
+<div class="club-plan"><h2>План на ближайшие месяцы</h2><div class="plan-list"><div class="plan-item"><span class="plan-date">Июль</span><span>Серия вебинаров: дизайн-системы от А до Я</span></div><div class="plan-item"><span class="plan-date">Август</span><span>Хакатон: прототип социального продукта за 48 часов</span></div><div class="plan-item"><span class="plan-date">Сентябрь</span><span>Конференция: лучшие кейсы студентов EduSpace</span></div></div></div>
+<div class="club-voting"><h2>Голосование за темы</h2><p>Выберите тему для следующего месяца</p>
+<div class="vote-list">
+<div class="vote-item"><div class="vote-count">47<span class="text-small">голосов</span></div><div class="vote-info"><h4>AI в дизайне: инструменты и этика</h4><p>Как нейросети меняют работу дизайнера</p></div><button class="btn btn-secondary btn-sm">Голосовать</button></div>
+<div class="vote-item"><div class="vote-count">38<span class="text-small">голосов</span></div><div class="vote-info"><h4>Фриланс для дизайнеров</h4><p>Поиск клиентов, ценообразование</p></div><button class="btn btn-secondary btn-sm">Голосовать</button></div>
+<div class="vote-item"><div class="vote-count">32<span class="text-small">голосов</span></div><div class="vote-info"><h4>Мобильный UX: паттерны 2026</h4><p>Новые жесты и навигация</p><span class="leader-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Лидер месяца</span></div><button class="btn btn-secondary btn-sm">Голосовать</button></div>
+</div>
+<div class="suggest-topic"><input class="input" placeholder="Предложить свою тему..."><button class="btn btn-primary">Предложить</button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ==================== ROW 5: Profile + Payment Modal ==================== -->
+<div class="frame-row">
+
+<!-- 10 — Профиль -->
+<div class="frame-wrapper">
+<div class="frame-label">10 — Профиль <span class="frame-sublabel">Profile</span></div>
+<div class="frame-box" style="min-height:900px">
+<div class="app-layout">
+<header class="header">
+<div class="header-inner">
+<a class="header-logo" href="#"><svg viewBox="0 0 28 28" fill="none" width="28" height="28"><rect width="28" height="28" rx="6" fill="var(--primary)"/><path d="M7 14L12 9L17 14L12 19L7 14Z" fill="white" opacity="0.9"/><path d="M12 14L17 9L22 14L17 19L12 14Z" fill="white" opacity="0.6"/></svg><span>EduSpace</span></a>
+<nav class="nav-links">
+<a class="nav-link" href="#">Главная</a>
+<a class="nav-link" href="#">Мои курсы</a>
+<a class="nav-link" href="#">Форум</a>
+<a class="nav-link" href="#">Клуб</a>
+<a class="nav-link active" href="#">Профиль</a>
+</nav>
+<div class="header-right"><div class="avatar">АП</div></div>
+</div>
+</header>
+<div class="screen">
+<div class="main-content">
+<div class="profile-header"><div class="profile-avatar">АП</div><div class="profile-info"><h2>Алексей Попов</h2><p>alexey.popov@email.ru</p></div><button class="btn btn-secondary">Редактировать</button></div>
+<div class="profile-tabs"><button class="profile-tab active">Мои курсы</button><button class="profile-tab">Избранное</button><button class="profile-tab">Настройки</button></div>
+<div class="profile-content">
+<div id="f10-profile-courses" style="display:block"><div class="my-course-grid"><div class="my-course-card"><div class="my-course-cover cover-my-violet"></div><div class="my-course-body"><h4>UX/UI дизайн с нуля</h4><div class="my-course-progress" style="margin-top:10px"><div class="progress"><div class="progress-fill" style="width:28%"></div></div></div><button class="btn btn-primary btn-sm" style="margin-top:12px;width:100%">Продолжить</button></div></div><div class="my-course-card"><div class="my-course-cover cover-my-green"></div><div class="my-course-body"><h4>Python для анализа данных</h4><div class="my-course-progress" style="margin-top:10px"><div class="progress"><div class="progress-fill" style="width:65%"></div></div></div><button class="btn btn-primary btn-sm" style="margin-top:12px;width:100%">Продолжить</button></div></div><div class="my-course-card"><div class="my-course-cover cover-my-indigo"></div><div class="my-course-body"><h4>SEO-продвижение</h4><div class="my-course-progress" style="margin-top:10px"><div class="progress"><div class="progress-fill" style="width:8%"></div></div></div><button class="btn btn-primary btn-sm" style="margin-top:12px;width:100%">Продолжить</button></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 11 — Оплата -->
+<div class="frame-wrapper">
+<div class="frame-label">11 — Оплата <span class="frame-sublabel">Payment Modal</span></div>
+<div class="frame-box" style="min-height:600px">
+<div class="payment-overlay-bg">
+<div class="modal">
+<button class="modal-close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+<h2>Оплата курса</h2>
+<p>UX/UI дизайн с нуля &middot; 12 900 &#8381;</p>
+<div class="payment-methods">
+<div class="payment-method selected"><span class="radio"></span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg><span class="pm-label">Банковская карта</span></div>
+<div class="payment-method"><span class="radio"></span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><circle cx="12" cy="12" r="4"/></svg><span class="pm-label">СБП (Система быстрых платежей)</span></div>
+</div>
+<div class="payment-fields">
+<div class="input-group"><label>Номер карты</label><input class="input" placeholder="0000 0000 0000 0000"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div class="input-group"><label>Срок</label><input class="input" placeholder="ММ/ГГ"></div>
+<div class="input-group"><label>CVV</label><input class="input" type="password" placeholder="***"></div>
+</div>
+</div>
+<button class="btn btn-primary btn-lg" style="width:100%">Оплатить 12 900 &#8381;</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div><!-- frames-canvas -->
+
+</body>
+</html>
